@@ -16,5 +16,18 @@ This sample app built using the Swift language uses the Realtime® Framework Mes
 > **Don't forget to replace `YOUR_APPLICATION_KEY` and `YOUR_APPLICATION_PRIVATE_KEY` with your own application key. If you don't already own a free Realtime® Framework application key, [get one now](https://accounts.realtime.co/signup/).**
 
 
+&nbsp;
+> NOTE: For using Objective-C files in your Swift project:
+> 
+> *		Create a `[File name].h` header file and add it to the project.
+> *		On this file add imports for the files you like to use in Swift (see `-Bridging-Header.h` example on this project).
+> *		On project build settings section search for `Objective-C Bridging Header` and set it to `[File name].h` 	
+
+> For more details see Apple [guide](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html) on this affair.
+> 
+> You are ready to go... 
+
+
+
 ## Documentation 
 The complete Realtime® Cloud Messaging reference documentation is available [here](http://framework.realtime.co/messaging/#documentation)
