@@ -29,9 +29,9 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     
     func setInterface(){
-        var leftItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
-        var rightItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
-        var navItem = UINavigationItem(title: "none")
+        let leftItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
+        let rightItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
+        let navItem = UINavigationItem(title: "none")
         navItem.leftBarButtonItem = leftItem
         navItem.rightBarButtonItem = rightItem
         
@@ -40,14 +40,14 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     }
     
     func save(){
-        var app:AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        var ortc:OrtcClient = app.ortc!.ortc!
+        let app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let ortc:OrtcClient = app.ortc!.ortc!
         
-        var nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as String
+        let nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String
         
-        var messageString:NSString = nick + ":" + textAreaMessage.text
+        let messageString:NSString = nick + ":" + textAreaMessage.text
         
-        ortc.send(channel!.name, message: messageString)
+        ortc.send(channel!.name, message: messageString as String)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -67,8 +67,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     }
     
     func countRemaning() -> Bool{
-        var text = textAreaMessage.text
-        var remaming = 260 - countElements(text)
+        let text = textAreaMessage.text
+        let remaming = 260 - text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         navController.topItem?.title =  "\(remaming) Remaning"
         
         if remaming > 0{

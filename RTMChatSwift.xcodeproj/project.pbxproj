@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57D2DEBE19EEB066002BD39A /* libOrtcClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D2DEBD19EEB066002BD39A /* libOrtcClient.a */; };
+		2DD4FFFBF83D6AE4791E7F4B /* libPods-RTMChatSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE3769B91759BAD17C9B8D2 /* libPods-RTMChatSwift.a */; };
 		57D2DEC219EEB1A7002BD39A /* OrtcClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2DEC119EEB1A7002BD39A /* OrtcClass.swift */; };
-		57D2DECB19EEB291002BD39A /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 57D2DEC419EEB291002BD39A /* base64.c */; };
-		57D2DECC19EEB291002BD39A /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D2DEC719EEB291002BD39A /* NSData+SRB64Additions.m */; };
-		57D2DECD19EEB291002BD39A /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D2DECA19EEB291002BD39A /* SRWebSocket.m */; };
 		57D2DECF19EEB29E002BD39A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D2DECE19EEB29E002BD39A /* libicucore.dylib */; };
 		57D2DED219EEC8B8002BD39A /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D2DED119EEC8B7002BD39A /* ChannelsViewController.swift */; };
 		57D62ADD19EFE5160003C55E /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D62ADC19EFE5160003C55E /* MessagesViewController.swift */; };
@@ -39,6 +36,7 @@
 		57FC7E0219ED7551008F4C9F /* settingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FC7DF819ED7551008F4C9F /* settingsIcon@2x.png */; };
 		57FC7E0419ED85AC008F4C9F /* realtimeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FC7E0319ED85AC008F4C9F /* realtimeIcon.png */; };
 		57FC7E0619ED8691008F4C9F /* realtimeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FC7E0519ED8691008F4C9F /* realtimeLogo.png */; };
+		8435C5A81C0CB2F400203A33 /* libRealtimeMessaging-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8435C5A71C0CB2F400203A33 /* libRealtimeMessaging-iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,15 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		57D2DEBD19EEB066002BD39A /* libOrtcClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOrtcClient.a; sourceTree = "<group>"; };
+		074B0FE62EF0A616482E6814 /* Pods-RTMChatSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTMChatSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RTMChatSwift/Pods-RTMChatSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		57D2DEC119EEB1A7002BD39A /* OrtcClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrtcClass.swift; sourceTree = "<group>"; };
-		57D2DEC419EEB291002BD39A /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
-		57D2DEC519EEB291002BD39A /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		57D2DEC619EEB291002BD39A /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
-		57D2DEC719EEB291002BD39A /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
-		57D2DEC819EEB291002BD39A /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		57D2DEC919EEB291002BD39A /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		57D2DECA19EEB291002BD39A /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		57D2DECE19EEB29E002BD39A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		57D2DED019EEB334002BD39A /* -Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		57D2DED119EEC8B7002BD39A /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +87,9 @@
 		57FC7DF819ED7551008F4C9F /* settingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsIcon@2x.png"; sourceTree = "<group>"; };
 		57FC7E0319ED85AC008F4C9F /* realtimeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = realtimeIcon.png; sourceTree = "<group>"; };
 		57FC7E0519ED8691008F4C9F /* realtimeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = realtimeLogo.png; sourceTree = "<group>"; };
+		7AE3769B91759BAD17C9B8D2 /* libPods-RTMChatSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTMChatSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8435C5A71C0CB2F400203A33 /* libRealtimeMessaging-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libRealtimeMessaging-iOS.a"; path = "Pods/../build/Debug-iphoneos/libRealtimeMessaging-iOS.a"; sourceTree = "<group>"; };
+		92F19EECC5B7E63038A4BF50 /* Pods-RTMChatSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTMChatSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-RTMChatSwift/Pods-RTMChatSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +97,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8435C5A81C0CB2F400203A33 /* libRealtimeMessaging-iOS.a in Frameworks */,
 				57D62AE419EFFD370003C55E /* UIKit.framework in Frameworks */,
 				57D2DECF19EEB29E002BD39A /* libicucore.dylib in Frameworks */,
-				57D2DEBE19EEB066002BD39A /* libOrtcClient.a in Frameworks */,
+				2DD4FFFBF83D6AE4791E7F4B /* libPods-RTMChatSwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,29 +114,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05AC956D5EACE2C4D11ED7A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8435C5A71C0CB2F400203A33 /* libRealtimeMessaging-iOS.a */,
+				7AE3769B91759BAD17C9B8D2 /* libPods-RTMChatSwift.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		57D2DEB919EEB066002BD39A /* ApiiOS */ = {
 			isa = PBXGroup;
 			children = (
 				57D62AE319EFFD370003C55E /* UIKit.framework */,
 				57D2DECE19EEB29E002BD39A /* libicucore.dylib */,
-				57D2DEC319EEB291002BD39A /* SocketRocket */,
-				57D2DEBD19EEB066002BD39A /* libOrtcClient.a */,
 			);
 			path = ApiiOS;
-			sourceTree = "<group>";
-		};
-		57D2DEC319EEB291002BD39A /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				57D2DEC419EEB291002BD39A /* base64.c */,
-				57D2DEC519EEB291002BD39A /* base64.h */,
-				57D2DEC619EEB291002BD39A /* NSData+SRB64Additions.h */,
-				57D2DEC719EEB291002BD39A /* NSData+SRB64Additions.m */,
-				57D2DEC819EEB291002BD39A /* SocketRocket-Prefix.pch */,
-				57D2DEC919EEB291002BD39A /* SRWebSocket.h */,
-				57D2DECA19EEB291002BD39A /* SRWebSocket.m */,
-			);
-			path = SocketRocket;
 			sourceTree = "<group>";
 		};
 		57FC7DC019ED7315008F4C9F = {
@@ -150,6 +138,8 @@
 				57FC7DCB19ED7315008F4C9F /* RTMChatSwift */,
 				57FC7DE119ED7315008F4C9F /* RTMChatSwiftTests */,
 				57FC7DCA19ED7315008F4C9F /* Products */,
+				7A3A17AE1E05F3FAD45C54EE /* Pods */,
+				05AC956D5EACE2C4D11ED7A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,6 +223,15 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		7A3A17AE1E05F3FAD45C54EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				074B0FE62EF0A616482E6814 /* Pods-RTMChatSwift.debug.xcconfig */,
+				92F19EECC5B7E63038A4BF50 /* Pods-RTMChatSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57FC7DE819ED7315008F4C9F /* Build configuration list for PBXNativeTarget "RTMChatSwift" */;
 			buildPhases = (
+				5F3D24FA7AA6F3381E48F94D /* Check Pods Manifest.lock */,
 				57FC7DC519ED7315008F4C9F /* Sources */,
 				57FC7DC619ED7315008F4C9F /* Frameworks */,
 				57FC7DC719ED7315008F4C9F /* Resources */,
+				E84968B52615BA078A8A6FB0 /* Embed Pods Frameworks */,
+				6EADD4E9F60770E254868A6E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +279,8 @@
 		57FC7DC119ED7315008F4C9F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Internet Business Technologies";
 				TargetAttributes = {
@@ -340,21 +344,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5F3D24FA7AA6F3381E48F94D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6EADD4E9F60770E254868A6E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTMChatSwift/Pods-RTMChatSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E84968B52615BA078A8A6FB0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTMChatSwift/Pods-RTMChatSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57FC7DC519ED7315008F4C9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				57D62AE219EFFCE10003C55E /* SpeechBubbleView.m in Sources */,
-				57D2DECD19EEB291002BD39A /* SRWebSocket.m in Sources */,
 				57D2DED219EEC8B8002BD39A /* ChannelsViewController.swift in Sources */,
 				57D62AEE19F013470003C55E /* Utils.m in Sources */,
-				57D2DECC19EEB291002BD39A /* NSData+SRB64Additions.m in Sources */,
 				57D2DEC219EEB1A7002BD39A /* OrtcClass.swift in Sources */,
 				57D62AE919F009180003C55E /* MessageTableViewCell.m in Sources */,
 				57FC7DD119ED7315008F4C9F /* ViewController.swift in Sources */,
 				57D62AE619EFFFFB0003C55E /* ComposeViewController.swift in Sources */,
-				57D2DECB19EEB291002BD39A /* base64.c in Sources */,
 				57D62ADD19EFE5160003C55E /* MessagesViewController.swift in Sources */,
 				57D62ADF19EFE7870003C55E /* Channel.swift in Sources */,
 				57FC7DCF19ED7315008F4C9F /* AppDelegate.swift in Sources */,
@@ -478,6 +527,7 @@
 		};
 		57FC7DE919ED7315008F4C9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 074B0FE62EF0A616482E6814 /* Pods-RTMChatSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				HEADER_SEARCH_PATHS = (
@@ -490,6 +540,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTMChatSwift/ApiiOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";
@@ -498,6 +549,7 @@
 		};
 		57FC7DEA19ED7315008F4C9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92F19EECC5B7E63038A4BF50 /* Pods-RTMChatSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				HEADER_SEARCH_PATHS = (
@@ -510,6 +562,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTMChatSwift/ApiiOS",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "-Bridging-Header.h";

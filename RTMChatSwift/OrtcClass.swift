@@ -40,7 +40,7 @@ class OrtcClass: NSObject, OrtcClientDelegate{
         
         for var i = 0 ; i < channels?.count; i++
         {
-            var channel:Channel = channels?.objectAtIndex(i) as Channel
+            let channel:Channel = channels?.objectAtIndex(i) as! Channel
             subscribeChannel(channel.name! as String)
         }
     }
@@ -50,16 +50,16 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     {
         self.ortc!.subscribe(channel, subscribeOnReconnected: true, onMessage: { (ortcClient:OrtcClient!, channel:String!, message:String!) -> Void in
             
-            var messageArray:NSArray = message.componentsSeparatedByString(":")
+            let messageArray:NSArray = message.componentsSeparatedByString(":")
             
-            var jsonMessage:NSMutableDictionary = NSMutableDictionary()
+            let jsonMessage:NSMutableDictionary = NSMutableDictionary()
             
             jsonMessage.setObject(messageArray.objectAtIndex(0), forKey: "NickName")
             jsonMessage.setObject(messageArray.objectAtIndex(1), forKey: "Message")
             jsonMessage.setObject(NSDate(), forKey: "Date")
             
-            var nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as String
-            var from:String = jsonMessage.objectForKey("NickName") as String
+            let nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String
+            let from:String = jsonMessage.objectForKey("NickName") as! String
             
             if from == nick
             {
@@ -68,10 +68,10 @@ class OrtcClass: NSObject, OrtcClientDelegate{
                 jsonMessage.setObject(0, forKey: "isFromUser")
             }
             
-            var channelRef:Channel! = self.channelsIndex!.objectForKey(channel as String) as Channel
+            let channelRef:Channel! = self.channelsIndex!.objectForKey(channel as String) as! Channel
             channelRef.unRead! += 1;
             channelRef.messages?.addObject(jsonMessage)
-            NSNotificationCenter.defaultCenter().postNotificationName("newMessage", object: nil, userInfo: jsonMessage)
+            NSNotificationCenter.defaultCenter().postNotificationName("newMessage", object: nil, userInfo: jsonMessage as [NSObject : AnyObject])
         })
 
     }
@@ -85,12 +85,12 @@ class OrtcClass: NSObject, OrtcClientDelegate{
             channels = NSMutableArray()
         }else
         {
-            var temp: NSMutableArray = NSMutableArray()
+            let temp: NSMutableArray = NSMutableArray()
             for obj in channels! as [AnyObject]
             {
-                var channel:Channel = Channel(name: obj as String)
+                let channel:Channel = Channel(name: obj as! String)
                 temp.addObject(channel)
-                channelsIndex?.setObject(channel, forKey: obj as String)
+                channelsIndex?.setObject(channel, forKey: obj as! String)
             }
             channels = temp
         }
@@ -111,7 +111,7 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     
     func onException(ortc: OrtcClient!, error: NSError!) {
         
-        var desc:String = (error.userInfo! as NSDictionary).objectForKey("NSLocalizedDescription") as String
+        let desc:String = ((error.userInfo as NSDictionary).objectForKey("NSLocalizedDescription") as? String)!
         if desc == "Unable to get URL from cluster (http://ortc-developers.realtime.co/server/2.1/)" || desc == "Unable to get URL from cluster (https://ortc-developers.realtime.co/server/ssl/2.1/)"
         {
             NSNotificationCenter.defaultCenter().postNotificationName("noConnection", object: nil)
