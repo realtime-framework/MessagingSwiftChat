@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func setInterface()
     {
-        var user:String? = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as String?
+        let user:String? = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String?
         buttonChatRooms.layer.masksToBounds = true
         buttonChatRooms.layer.cornerRadius = 6
         buttonChatRooms.layer.masksToBounds = true

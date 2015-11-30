@@ -36,7 +36,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func edit(){
-        let viewController:ComposeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Compose") as ComposeViewController
+        let viewController:ComposeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Compose") as! ComposeViewController
         viewController.channel = channel
         
         self.presentViewController(viewController, animated: true, completion: nil)
@@ -61,7 +61,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var CellIdentifier = "MessageCellIdentifier"
+        let CellIdentifier = "MessageCellIdentifier"
         
         var cell:MessageTableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? MessageTableViewCell
         
@@ -72,16 +72,16 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         cell?.backgroundColor = UIColor.clearColor()
         
-        let message:NSDictionary = channel!.messages!.objectAtIndex(indexPath.row) as NSDictionary
-        cell!.setMessage(message)
+        let message:NSDictionary = channel!.messages!.objectAtIndex(indexPath.row) as! NSDictionary
+        cell!.setMessage(message as [NSObject : AnyObject])
         
         return cell!
 
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let message:NSDictionary = channel!.messages!.objectAtIndex(indexPath.row) as NSDictionary
-        var bublesize = SpeechBubbleView.sizeForText(message.objectForKey("Message") as String) as CGSize
+        let message:NSDictionary = channel!.messages!.objectAtIndex(indexPath.row) as! NSDictionary
+        let bublesize = SpeechBubbleView.sizeForText(message.objectForKey("Message") as! String) as CGSize
         
         return bublesize.height + 16
     }
