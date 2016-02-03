@@ -39,19 +39,19 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func setInterface(){
         self.title = "Chat Rooms"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Bordered, target: self, action: "edit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
         self.tableChannels.backgroundView = UIImageView(image: UIImage(named: "background.png"))
     }
     
     func edit(){
         tableChannels.editing = true;
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Bordered, target: self, action: "endEdit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "endEdit")
         tableChannels.reloadData()
     }
 
     func endEdit(){
         tableChannels.editing = false;
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Bordered, target: self, action: "edit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
         tableChannels.reloadData()
     }
     
@@ -177,7 +177,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("messages", sender: nil)
+
     }
     
 
@@ -186,8 +186,11 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let destination = segue.destinationViewController as! MessagesViewController
-        destination.channel = channels!.objectAtIndex(tableChannels.indexPathForSelectedRow!.row) as? Channel
-        tableChannels.deselectRowAtIndexPath(tableChannels.indexPathForSelectedRow!, animated: false)
+        let selected = tableChannels.indexPathForSelectedRow
+        if selected != nil{
+            destination.channel = channels!.objectAtIndex((selected?.row)!) as? Channel
+            tableChannels.deselectRowAtIndexPath(tableChannels.indexPathForSelectedRow!, animated: false)
+        }
     }
     
 //    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {

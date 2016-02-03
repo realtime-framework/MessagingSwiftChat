@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealtimeMessaging_iOS_Swift
 
 class ComposeViewController: UIViewController, UITextViewDelegate {
 
@@ -41,13 +42,13 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     func save(){
         let app:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let ortc:OrtcClient = app.ortc!.ortc!
+        let ortc:OrtcClient = ((app.ortc! as OrtcClass).ortc! as OrtcClient)
         
         let nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String
         
         let messageString:NSString = nick + ":" + textAreaMessage.text
         
-        ortc.send(channel!.name, message: messageString as String)
+        ortc.send(channel!.name!, message: messageString as String)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

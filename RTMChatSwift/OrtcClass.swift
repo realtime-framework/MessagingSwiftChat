@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealtimeMessaging_iOS_Swift
 
 class OrtcClass: NSObject, OrtcClientDelegate{
-    let APPKEY = "__YOUR_APPLICATION_KEY__"
+    let APPKEY = "2Ze1dz"
     let TOKEN = "TOKEN"
     let METADATA = "METADATA"
     let URL = "http://ortc-developers.realtime.co/server/2.1/"
@@ -19,9 +20,10 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     
     var channels:NSMutableArray?
     var channelsIndex:NSMutableDictionary?
+    
     func connect()
     {
-        self.ortc = OrtcClient.ortcClientWithConfig(self) as? OrtcClient
+        self.ortc = OrtcClient.ortcClientWithConfig(self)
         self.ortc!.connectionMetadata = METADATA
         self.ortc!.clusterUrl = URL
         
@@ -32,23 +34,9 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     }
     
     
-    func onConnected(ortc: OrtcClient!) {
-        NSLog("CONNECTED")
-        NSNotificationCenter.defaultCenter().postNotificationName("ortcConnect", object: nil)
-        
-        
-        
-        for var i = 0 ; i < channels?.count; i++
-        {
-            let channel:Channel = channels?.objectAtIndex(i) as! Channel
-            subscribeChannel(channel.name! as String)
-        }
-    }
-    
-    
     func subscribeChannel(channel:String)
     {
-        self.ortc!.subscribe(channel, subscribeOnReconnected: true, onMessage: { (ortcClient:OrtcClient!, channel:String!, message:String!) -> Void in
+        self.ortc!.subscribeWithNotifications(channel, subscribeOnReconnected: true, onMessage: { (ortcClient:OrtcClient!, channel:String!, message:String!) -> Void in
             
             let messageArray:NSArray = message.componentsSeparatedByString(":")
             
@@ -63,9 +51,9 @@ class OrtcClass: NSObject, OrtcClientDelegate{
             
             if from == nick
             {
-                jsonMessage.setObject(1, forKey: "isFromUser")
+                jsonMessage.setObject(true, forKey: "isFromUser")
             }else{
-                jsonMessage.setObject(0, forKey: "isFromUser")
+                jsonMessage.setObject(false, forKey: "isFromUser")
             }
             
             let channelRef:Channel! = self.channelsIndex!.objectForKey(channel as String) as! Channel
@@ -96,21 +84,59 @@ class OrtcClass: NSObject, OrtcClientDelegate{
         }
     }
     
-    func onSubscribed(ortc: OrtcClient!, channel: String!) {
+    
+    /**
+     * Occurs when the client connects.
+     *
+     * @param ortc The ORTC object.
+     */
+    func onConnected(ortc: OrtcClient){
+        NSLog("CONNECTED")
+        NSNotificationCenter.defaultCenter().postNotificationName("ortcConnect", object: nil)
+        
+        for var i = 0 ; i < channels?.count; i++
+        {
+            let channel:Channel = channels?.objectAtIndex(i) as! Channel
+            subscribeChannel(channel.name! as String)
+        }
+    }
+    /**
+     * Occurs when the client disconnects.
+     *
+     * @param ortc The ORTC object.
+     */
+    
+    func onDisconnected(ortc: OrtcClient){
+    
+    }
+    /**
+     * Occurs when the client subscribes to a channel.
+     *
+     * @param ortc The ORTC object.
+     * @param channel The channel name.
+     */
+    
+    func onSubscribed(ortc: OrtcClient, channel: String){
         NSLog("did subscribe %@", channel)
     }
+    /**
+     * Occurs when the client unsubscribes from a channel.
+     *
+     * @param ortc The ORTC object.
+     * @param channel The channel name.
+     */
     
-    func onUnsubscribed(ortc: OrtcClient!, channel: String!) {
-        
+    func onUnsubscribed(ortc: OrtcClient, channel: String){
+    
     }
+    /**
+     * Occurs when there is an exception.
+     *
+     * @param ortc The ORTC object.
+     * @param error The occurred exception.
+     */
     
-    
-    func onDisconnected(ortc: OrtcClient!) {
-        
-    }
-    
-    func onException(ortc: OrtcClient!, error: NSError!) {
-        
+    func onException(ortc: OrtcClient, error: NSError){
         let desc:String = ((error.userInfo as NSDictionary).objectForKey("NSLocalizedDescription") as? String)!
         if desc == "Unable to get URL from cluster (http://ortc-developers.realtime.co/server/2.1/)" || desc == "Unable to get URL from cluster (https://ortc-developers.realtime.co/server/ssl/2.1/)"
         {
@@ -118,14 +144,28 @@ class OrtcClass: NSObject, OrtcClientDelegate{
         }
         NSLog("%@", desc)
     }
+    /**
+     * Occurs when the client attempts to reconnect.
+     *
+     * @param ortc The ORTC object.
+     */
     
-    func onReconnected(ortc: OrtcClient!) {
+    func onReconnecting(ortc: OrtcClient){
+    
+    }
+    /**
+     * Occurs when the client reconnects.
+     *
+     * @param ortc The ORTC object.
+     */
+    
+    func onReconnected(ortc: OrtcClient){
         NSNotificationCenter.defaultCenter().postNotificationName("ortcConnect", object: nil)
     }
     
-    func onReconnecting(ortc: OrtcClient!) {
-        
-    }
+
+    
+
 
     
     

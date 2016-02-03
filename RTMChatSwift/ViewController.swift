@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonChatRooms: UIButton!
     @IBOutlet weak var labelState: UILabel!    
     @IBOutlet weak var labelWelcome: UILabel!
+    var isConnect:Bool = false
     
     override func viewDidLoad()
     {
@@ -21,14 +22,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.title = "RTMChat swift"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ortcConnect", name: "ortcConnect", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setInterface", name: "noConnection", object: nil)
+        self.disableBt()
         self.setInterface()
+        
         textNick.delegate = self
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         NSUserDefaults.standardUserDefaults().setValue(textNick.text, forKey: "NickName")
         NSUserDefaults.standardUserDefaults().synchronize()
-        self.setInterface()
+        textField.resignFirstResponder()
+        self.setConnectState()
         return true
     }
     
@@ -52,28 +56,60 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             labelWelcome.text = "Welcome " + user!
             labelWelcome.hidden = false
+            if isConnect {
+                self.enableBt()
+            }
+
         }else
         {
             textNick.hidden = false
             labelWelcome.hidden = true
         }
         
-        buttonChatRooms.enabled = false
-        buttonChatRooms.backgroundColor = UIColor.grayColor()
-        buttonChatRooms.layer.borderColor = UIColor.blackColor().CGColor
-        buttonChatRooms.layer.borderWidth = 1
-        
-        labelState.layer.borderColor = UIColor.blackColor().CGColor
+                labelState.layer.borderColor = UIColor.blackColor().CGColor
         labelState.layer.borderWidth = 1
         labelState.backgroundColor = UIColor.grayColor()
         labelState.text = "Not connected"
     }
+    
+    func disableBt(){
+        buttonChatRooms.enabled = false
+        buttonChatRooms.backgroundColor = UIColor.grayColor()
+        buttonChatRooms.layer.borderColor = UIColor.blackColor().CGColor
+        buttonChatRooms.layer.borderWidth = 1
+    }
+    
+    func enableBt(){
+        buttonChatRooms.enabled = true
+        buttonChatRooms.backgroundColor = UIColor.lightGrayColor()
+    }
+    
+    func setConnectState(){
+        let user:String? = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String?
+        if user != nil
+        {
+            textNick.hidden = true
+            
+            labelWelcome.text = "Welcome " + user!
+            labelWelcome.hidden = false
+            if isConnect {
+                self.enableBt()
+            }
+
+            if isConnect {
+                self.enableBt()
+            }
+            
+        }
+
+    }
 
     func ortcConnect()
     {
+        self.isConnect = true
+        self.setConnectState()
+
         labelState.text = "Ortc is connected"
-        buttonChatRooms.enabled = true
-        buttonChatRooms.backgroundColor = UIColor.lightGrayColor()
         labelState.backgroundColor = UIColor.lightGrayColor()
     }
     

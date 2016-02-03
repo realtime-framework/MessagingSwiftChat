@@ -11,20 +11,18 @@ This sample app built using the Swift language uses the Realtime® Framework Mes
 ###This app is compatible with the Android and iOS (Objective-C) sample. See [https://github.com/realtime-framework/Messaging/tree/master/Android%20with%20Push%20Notifications](https://github.com/realtime-framework/Messaging/tree/master/Android%20with%20Push%20Notifications "https://github.com/realtime-framework/Messaging/tree/master/Android%20with%20Push%20Notifications")
 
 
+&nbsp;
+### Setup project
+
+*	Install [cocoapods](https://guides.cocoapods.org/using/getting-started.html#toc_3) and run command `pod install` on the podfile directory.
+
 > NOTE: For simplicity these samples assume you're using a Realtime® Framework developers' application key with the authentication service disabled (every connection will have permission to publish and subscribe to any channel). For security guidelines please refer to the [Security Guide](http://messaging-public.realtime.co/documentation/starting-guide/security.html). 
 > 
 > **Don't forget to replace `YOUR_APPLICATION_KEY` and `YOUR_APPLICATION_PRIVATE_KEY` with your own application key. If you don't already own a free Realtime® Framework application key, [get one now](https://accounts.realtime.co/signup/).**
 
 
 &nbsp;
-> NOTE: For using Objective-C files in your Swift project:
-> 
-> *		Create a `[File name].h` header file and add it to the project.
-> *		On this file add imports for the files you like to use in Swift (see `-Bridging-Header.h` example on this project).
-> *		On project build settings section search for `Objective-C Bridging Header` and set it to `[File name].h` 	
 
-> For more details see Apple [guide](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html) on this affair.
-> 
 > You are ready to go... 
 
 
