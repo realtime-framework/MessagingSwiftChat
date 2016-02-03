@@ -1,13 +1,15 @@
 PODS:
-  - RealtimeMessaging-iOS (2.1.24):
-    - SocketRocket (~> 0.4.2)
-  - SocketRocket (0.4.2)
+  - RealtimeMessaging-iOS-Swift (2.1.0):
+    - Starscream (~> 1.1.1)
+  - Starscream (1.1.1)
 
 DEPENDENCIES:
-  - RealtimeMessaging-iOS
+  - RealtimeMessaging-iOS-Swift (~> 2.1)
 
 SPEC CHECKSUMS:
-  RealtimeMessaging-iOS: 10247d6aca276e1d919128a607f48aecd7550748
-  SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
+  RealtimeMessaging-iOS-Swift: 75d7757dcb811590c92b203ef4f8d005a63103ed
+  Starscream: d74dd8d122a6abd244d8d5e51f32891c796d0827
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 3c38c4b363d47e4a1d455b67ee26d56e42d48e2b
+
+COCOAPODS: 1.0.0.beta.2
