@@ -13,7 +13,7 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     let APPKEY = "2Ze1dz"
     let TOKEN = "TOKEN"
     let METADATA = "METADATA"
-    let URL = "http://ortc-developers.realtime.co/server/2.1/"
+    let URL = "https://ortc-developers.realtime.co/server/ssl/2.1/"
     
     var ortc: OrtcClient?
     var onMessage:AnyObject?
