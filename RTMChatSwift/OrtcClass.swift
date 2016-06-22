@@ -10,7 +10,7 @@ import UIKit
 import RealtimeMessaging_iOS_Swift
 
 class OrtcClass: NSObject, OrtcClientDelegate{
-    let APPKEY = "2Ze1dz"
+    let APPKEY = "INSERT_YOUR_APP_KEY"
     let TOKEN = "TOKEN"
     let METADATA = "METADATA"
     let URL = "http://ortc-developers.realtime.co/server/2.1/"
@@ -37,31 +37,34 @@ class OrtcClass: NSObject, OrtcClientDelegate{
     func subscribeChannel(channel:String)
     {
         self.ortc!.subscribeWithNotifications(channel, subscribeOnReconnected: true, onMessage: { (ortcClient:OrtcClient!, channel:String!, message:String!) -> Void in
-            
-            let messageArray:NSArray = message.componentsSeparatedByString(":")
-            
-            let jsonMessage:NSMutableDictionary = NSMutableDictionary()
-            
-            jsonMessage.setObject(messageArray.objectAtIndex(0), forKey: "NickName")
-            jsonMessage.setObject(messageArray.objectAtIndex(1), forKey: "Message")
-            jsonMessage.setObject(NSDate(), forKey: "Date")
-            
-            let nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String
-            let from:String = jsonMessage.objectForKey("NickName") as! String
-            
-            if from == nick
-            {
-                jsonMessage.setObject(true, forKey: "isFromUser")
-            }else{
-                jsonMessage.setObject(false, forKey: "isFromUser")
-            }
-            
-            let channelRef:Channel! = self.channelsIndex!.objectForKey(channel as String) as! Channel
-            channelRef.unRead! += 1;
-            channelRef.messages?.addObject(jsonMessage)
-            NSNotificationCenter.defaultCenter().postNotificationName("newMessage", object: nil, userInfo: jsonMessage as [NSObject : AnyObject])
+            self.processMessage(channel, message: message)
         })
 
+    }
+    
+    func processMessage(channel:String!, message:String!){
+        let messageArray:NSArray = message.componentsSeparatedByString(":")
+        
+        let jsonMessage:NSMutableDictionary = NSMutableDictionary()
+        
+        jsonMessage.setObject(messageArray.objectAtIndex(0), forKey: "NickName")
+        jsonMessage.setObject(messageArray.objectAtIndex(1), forKey: "Message")
+        jsonMessage.setObject(NSDate(), forKey: "Date")
+        
+        let nick:String = NSUserDefaults.standardUserDefaults().objectForKey("NickName") as! String
+        let from:String = jsonMessage.objectForKey("NickName") as! String
+        
+        if from == nick
+        {
+            jsonMessage.setObject(true, forKey: "isFromUser")
+        }else{
+            jsonMessage.setObject(false, forKey: "isFromUser")
+        }
+        
+        let channelRef:Channel! = self.channelsIndex!.objectForKey(channel as String) as! Channel
+        channelRef.unRead! += 1;
+        channelRef.messages?.addObject(jsonMessage)
+        NSNotificationCenter.defaultCenter().postNotificationName("newMessage", object: nil, userInfo: jsonMessage as [NSObject : AnyObject])
     }
     
     func loadChannels(){
@@ -94,7 +97,7 @@ class OrtcClass: NSObject, OrtcClientDelegate{
         NSLog("CONNECTED")
         NSNotificationCenter.defaultCenter().postNotificationName("ortcConnect", object: nil)
         
-        for var i = 0 ; i < channels?.count; i++
+        for var i = 0 ; i < channels?.count; i += 1
         {
             let channel:Channel = channels?.objectAtIndex(i) as! Channel
             subscribeChannel(channel.name! as String)

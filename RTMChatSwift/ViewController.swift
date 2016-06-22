@@ -20,8 +20,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     {
         super.viewDidLoad()
         self.title = "RTMChat swift"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ortcConnect", name: "ortcConnect", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setInterface", name: "noConnection", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.ortcConnect), name: "ortcConnect", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.setInterface), name: "noConnection", object: nil)
         self.disableBt()
         self.setInterface()
         
