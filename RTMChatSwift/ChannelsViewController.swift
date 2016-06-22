@@ -24,7 +24,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
         self.setInterface()
         let app:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         channels = app.ortc?.channels
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newMessage", name: "newMessage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChannelsViewController.newMessage), name: "newMessage", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,19 +39,19 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func setInterface(){
         self.title = "Chat Rooms"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ChannelsViewController.edit))
         self.tableChannels.backgroundView = UIImageView(image: UIImage(named: "background.png"))
     }
     
     func edit(){
         tableChannels.editing = true;
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "endEdit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ChannelsViewController.endEdit))
         tableChannels.reloadData()
     }
 
     func endEdit(){
         tableChannels.editing = false;
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: "edit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ChannelsViewController.edit))
         tableChannels.reloadData()
     }
     
@@ -128,7 +128,7 @@ class ChannelsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         let subViews: NSArray = cell!.contentView.subviews as NSArray
-        for var i = 0; i < subViews.count; i++
+        for i in 0 ..< subViews.count
         {
             let subview:UIView = subViews.objectAtIndex(i) as! UIView
             subview.removeFromSuperview()

@@ -30,8 +30,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     
     func setInterface(){
-        let leftItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
-        let rightItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
+        let leftItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ComposeViewController.cancel))
+        let rightItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ComposeViewController.save))
         let navItem = UINavigationItem(title: "none")
         navItem.leftBarButtonItem = leftItem
         navItem.rightBarButtonItem = rightItem

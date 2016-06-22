@@ -21,7 +21,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableMessages.dataSource = self
         tableMessages.delegate = self
         setInterface()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newMessage", name: "newMessage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.newMessage), name: "newMessage", object: nil)
     }
     
     
@@ -31,7 +31,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func setInterface(){
         self.title = channel!.getName()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "edit")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(MessagesViewController.edit))
         self.tableMessages.backgroundView = UIImageView(image: UIImage(named: "background.png"))
     }
     
