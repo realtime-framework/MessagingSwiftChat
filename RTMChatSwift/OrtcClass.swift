@@ -140,12 +140,13 @@ class OrtcClass: NSObject, OrtcClientDelegate{
      */
     
     func onException(ortc: OrtcClient, error: NSError){
-        let desc:String = ((error.userInfo as NSDictionary).objectForKey("NSLocalizedDescription") as? String)!
-        if desc == "Unable to get URL from cluster (http://ortc-developers.realtime.co/server/2.1/)" || desc == "Unable to get URL from cluster (https://ortc-developers.realtime.co/server/ssl/2.1/)"
+        let desc:String? = ((error.userInfo as NSDictionary).objectForKey("NSLocalizedDescription") as? String)
+        if desc != nil && desc == "Unable to get URL from cluster (http://ortc-developers.realtime.co/server/2.1/)" || desc == "Unable to get URL from cluster (https://ortc-developers.realtime.co/server/ssl/2.1/)"
         {
             NSNotificationCenter.defaultCenter().postNotificationName("noConnection", object: nil)
+            NSLog("%@", desc!)
         }
-        NSLog("%@", desc)
+        
     }
     /**
      * Occurs when the client attempts to reconnect.
